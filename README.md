@@ -42,7 +42,7 @@ Encontrar as duas flags escondidas.
    - Usando o `ls` podemos achar a primeira flag.
    - ![Primeira flag](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/primeiraflag.png)
 
-7. **Escalação de privilégios para achar a segunda flag***
+7. **Escalação de privilégios para achar a segunda flag**
    - Induzindo que o nome da primeira flag é "flag1.txt", podemos usar o comando `locate flag2.txt` para achar o diretório que tem o arquivo "flag2.txt".
    - Indo para o diretório /home/devops/ e usando o `ls -la` achamos a segunda flag, porém não temos permissão para ver o que tem dentro do arquivo.
    - ![Sem permissão](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/sempermissaosegundaflag.png)
