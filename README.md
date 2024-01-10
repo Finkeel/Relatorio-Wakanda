@@ -17,7 +17,7 @@ Encontrar as duas flags escondidas.
    - Abrindo o código-fonte podemos encontrar o seguinte:
    - ![Imagem do código fonte](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/codigofonte.png)
 
-3. Analisando o código-fonte
+3. **Analisando o código-fonte**
    - Dentro do código-fonte da página podemos encontrar um comentário que nos sugere um parâmetro de idioma, sendo possível mudar o idioma da página utilizando um `?lang=` na url. No caso, o idioma é o francês.
    - Digitando `?lang=fr` no final da url, o idioma do site muda para francês.
    - Sabendo que o `?lang=` aceita um parâmetro, podemos tentar realizar um Path Traversal.
@@ -27,24 +27,23 @@ Encontrar as duas flags escondidas.
    - Utilizando um site para descriptografar o código, obtemos isto:
    - ![base64descriptografado](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/base64descriptografado.png)
 
-4. Utilizando SSH para ter acesso
+4. **Utilizando SSH para ter acesso**
    - Um detalhe importante: na página inicial, na parte inferior, podemos ver o seguinte texto: Made by@mamadou.
    - Utilizando o comando `ssh mamadou@192.168.15.99 -p 3333` e utilizando a senha que foi encontrada no código descriptografado, conseguimos acesso.
    - ![Acesso ao SSH](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/acessossh.png)
 
-5. Usando o Python para "spawnar" uma shell
+5. ***Usando o Python para "spawnar" uma shell**
    - Observando atentamente o terminal, percebemos que estamos dentro da IDLE do Python, ou seja, não temos uma shell.
    - Para "spawnar" uma shell, vamos primeiro digitar `import pty`.
    - Importando o pty, digitaremos o comando `pty.spawn("/bin/bash")`
    - ![Imagem dentro da IDLE do Python; "Spawnando" uma shell](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/spawnandoshell.png)
 
-6. Achando a primeira flag
+6. **Achando a primeira flag**
    - Usando o `ls` podemos achar a primeira flag.
-   - ![Primeira flag]()
+   - ![Primeira flag](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/primeiraflag.png)
 
-7. Escalação de privilégios para achar a segunda flag
+7. **Escalação de privilégios para achar a segunda flag***
    - Induzindo que o nome da primeira flag é "flag1.txt", podemos usar o comando `locate flag2.txt` para achar o diretório que tem o arquivo "flag2.txt".
-   - ![Diretório da segunda flag](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/primeiraflag.png)
    - Indo para o diretório /home/devops/ e usando o `ls -la` achamos a segunda flag, porém não temos permissão para ver o que tem dentro do arquivo.
    - ![Sem permissão](https://github.com/Finkeel/Relatorio-Wakanda/blob/main/imagens/sempermissaosegundaflag.png)
    - Utilizando o comando `find / -user devops` podemos ver o que o usuário tem permissão ou não para acesso.
